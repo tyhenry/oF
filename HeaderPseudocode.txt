@@ -1,0 +1,88 @@
+
+Pseudo-code:
+
+Setup {
+
+	Setup video input;
+	
+	Setup Haar finder face detector;
+
+	Setup ball object;
+
+	Setup sounds;
+
+	setup boolean gameover;
+
+}
+
+Update {
+
+	Get main Haar blob (your face);
+	Determine face coordinates;
+
+	If face on left of video image {
+		move video image left;
+	} else on right {
+		move video image right;
+	}
+
+	update ball object's position and velocity;
+
+	if ball hits wall {
+		invert vel x;
+
+		play bounce sound;
+	}
+
+	if ball hits top {
+		invert vel y;
+
+		play bounce sound;
+	}
+
+	if ball hits head {
+		invert vel x and y;
+
+		play header sound;
+	}
+
+	if ball goes off bottom {
+		gameover = true;
+
+		play wah-wah sound;
+	}
+
+}
+
+Draw {
+
+	if (!gameover){
+	
+		draw video image at bottom of screen with updated x position;
+
+		draw Haar blob around head;
+
+		draw ball;
+
+	} else {
+
+		write message: "Game Over, press to play again.";
+	}
+
+
+}
+
+Ball object {
+
+	update {
+
+		position += velocity;
+
+	}
+	
+	display {
+
+		circle at position x + y;
+
+	}
+}
