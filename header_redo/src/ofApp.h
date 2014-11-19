@@ -41,6 +41,7 @@ class ofApp : public ofBaseApp{
         ofVec2f headCenter;
         ofVec2f headSize;
         ofVec2f camULCorner;
+        bool faceCircle;
     
         //video texture for cutout
         unsigned char * videoInverted;

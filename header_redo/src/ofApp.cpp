@@ -47,6 +47,9 @@ void ofApp::setup(){
     headSize.x = 50.0f;
     headSize.y = 50.0f;
     
+    //start with face circle on
+    faceCircle = true;
+    
     
     /*-----Ball-----*/
     
@@ -227,8 +230,10 @@ void ofApp::draw(){
         vidGrabber.draw(camULCorner.x,camULCorner.y);
         
         //draw blob outline
-        
-        ofEllipse(headCenter.x, headCenter.y, headSize.x, headSize.y);
+        //if "face circle" turned on
+        if (faceCircle){
+            ofEllipse(headCenter.x, headCenter.y, headSize.x, headSize.y);
+        }
         
         //draw ball
         //ball.display();
@@ -271,6 +276,11 @@ void ofApp::keyReleased(int key){
     if (key == ' '){
         ball.setup();
         ballDead = false;
+    }
+    
+    //turn off face circle
+    if (key == 'c'){
+        faceCircle = !faceCircle;
     }
 
 }
